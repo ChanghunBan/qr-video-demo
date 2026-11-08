@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <title>Watch the video</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: #101827; color: #f1f5f9; }
+    main { width: min(100% - 32px, 1000px); margin: 48px auto; }
+    h1 { font-size: clamp(24px, 5vw, 36px); margin-bottom: 12px; }
+    p { color: #b6c4d8; line-height: 1.6; }
+    video { display: block; width: 100%; max-height: 75vh; background: #000; border-radius: 12px; }
+    button, a { font: inherit; }
+    button { padding: 12px 18px; border: 0; border-radius: 8px; background: #67e8f9; color: #101827; cursor: pointer; }
+    button:focus-visible, a:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+    .actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+    a { color: #67e8f9; }
+    #status { min-height: 1.6em; }
+    @media (max-width: 600px) { main { margin-top: 24px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Watch the video</h1>
+    <p>Playback starts muted when your browser allows it. Tap the button for sound.</p>
+    <video id="video" controls autoplay muted playsinline preload="metadata">
+      <source src="./video.mp4" type="video/mp4">
+      Your browser does not support this video. Use the video link below.
+    </video>
+    <div class="actions">
+      <button id="play" type="button">Play with sound</button>
+      <a href="./video.mp4">Open video directly</a>
+    </div>
+    <p id="status" role="status" aria-live="polite"></p>
+  </main>
+  <script>
+    const video = document.getElementById('video');
+    const status = document.getElementById('status');
+    document.getElementById('play').addEventListener('click', async () => {
+      video.muted = false;
+      try {
+        await video.play();
+        status.textContent = '';
+      } catch (error) {
+        status.textContent = 'Playback could not start. Try the player controls or open the video directly.';
+      }
+    });
+    video.addEventListener('error', () => {
+      status.textContent = 'The video could not load. Check your connection or try the direct video link.';
+    });
+  </script>
+</body>
+</html>
