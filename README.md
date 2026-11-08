@@ -3,6 +3,11 @@
 A public GitHub Pages video page. The repository contains only the page and the
 video approved for public sharing.
 
+Live page: https://changhunban.github.io/qr-video-demo/
+
+- [QR code PNG](./qr-code.png): use for sharing and printing.
+- [QR code SVG](./qr-code.svg): scalable version for print layouts.
+
 - `index.html`: responsive player with muted autoplay and a play-with-sound button.
 - `video.mp4`: the published video.
 - `.nojekyll`: publish the static files without Jekyll processing.
