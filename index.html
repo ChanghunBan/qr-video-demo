@@ -19,6 +19,9 @@
     .actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
     a { color: #67e8f9; }
     #status { min-height: 1.6em; }
+    footer { margin-top: 32px; padding-top: 24px; border-top: 1px solid #334155; }
+    footer h2 { font-size: 18px; margin: 0 0 12px; }
+    footer p { margin: 6px 0; overflow-wrap: anywhere; }
     @media (max-width: 600px) { main { margin-top: 24px; } }
   </style>
 </head>
@@ -35,6 +38,12 @@
       <a href="./video.mp4">Open video directly</a>
     </div>
     <p id="status" role="status" aria-live="polite"></p>
+    <footer lang="ko" aria-labelledby="developer-heading">
+      <h2 id="developer-heading">개발자 정보</h2>
+      <p>이름: 반창훈</p>
+      <p>팀: BD/SLP-AOK6</p>
+      <p>메일: <a href="mailto:bac1buy@bosch.com">bac1buy@bosch.com</a></p>
+    </footer>
   </main>
   <script>
     const video = document.getElementById('video');
